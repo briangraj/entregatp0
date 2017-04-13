@@ -2,7 +2,6 @@ package viewModel;
 
 import javax.ws.rs.core.MediaType;
 
-import org.uqbar.commons.utils.Dependencies;
 import org.uqbar.commons.utils.Observable;
 
 import com.google.gson.Gson;
@@ -16,7 +15,7 @@ public class ValidacionVM {
 
 	private String token;
 	private String estado;
-	private Estudiante estudiante = new Estudiante();
+	private Estudiante estudiante;// = new Estudiante();
 
 	
 	public void validar(){
