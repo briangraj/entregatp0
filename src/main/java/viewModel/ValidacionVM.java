@@ -29,10 +29,10 @@ public class ValidacionVM {
 	}
 	
 	private Boolean estudianteValido() {
-		return  !this.estudiante.getCode().equals(null) &&
-				!this.estudiante.getFirst_name().equals(null) &&
-				!this.estudiante.getLast_name().equals(null) &&
-				!this.estudiante.getGithub_user().equals(null);
+		return  this.estudiante.getCode() != null &&
+				this.estudiante.getFirst_name() != null &&
+				this.estudiante.getLast_name() != null &&
+				this.estudiante.getGithub_user() != null;
 	}
 	
 	//@Dependencies("token")
