@@ -16,14 +16,16 @@ public class ValidacionVM {
 
 	private String token;
 	private String estado;
-	private Estudiante estudiante;
+	private Estudiante estudiante = new Estudiante();
 
 	
 	public void validar(){
-		if (this.estudianteValido()) 
-			this.estado = "Token valido";
-		else 
-			this.estado = "Token invalido";		
+		this.cargarEstudiante();
+		if (this.estudianteValido()) {
+			this.estado = "Token válido";
+		} else {
+			this.estado = "Token inválido";
+		}
 	}
 	
 	private Boolean estudianteValido() {
@@ -33,7 +35,7 @@ public class ValidacionVM {
 				!this.estudiante.getGithub_user().equals(null);
 	}
 	
-	@Dependencies("token")
+	//@Dependencies("token")
 	public void cargarEstudiante(){
 		String json = Client.create().resource("http://notitas.herokuapp.com")
 			        		.path("student")
@@ -64,5 +66,14 @@ public class ValidacionVM {
 		this.estado = estado;
 	}
 
+	public Estudiante getEstudiante() {
+		return estudiante;
+	}
+
+	public void setEstudiante(Estudiante estudiante) {
+		this.estudiante = estudiante;
+	}
+	
+	
 	
 }
