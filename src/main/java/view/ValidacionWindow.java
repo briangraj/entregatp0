@@ -23,8 +23,14 @@ public class ValidacionWindow extends SimpleWindow<ValidacionVM>{
 		.setCaption("Ver asignaciones")
 		.onClick(() -> this.obtenerAsignaciones());
 		
+		Button actualizarDatos = new Button(panelActions)
+				.setCaption("Actualizar datos")
+				.onClick(() -> this.actualizarDatos());
+
+		
 		NotNullObservable elementSelected = new NotNullObservable("habilitarOpciones");
 		obtenerAsignaciones.bindEnabled(elementSelected);
+		actualizarDatos.bindEnabled(elementSelected);
 	}
 	
 	@Override
@@ -33,10 +39,10 @@ public class ValidacionWindow extends SimpleWindow<ValidacionVM>{
 		this.setTitle("Validacion del token");
 		
 		
-		new TextBox(form).setWidth(600).bindValueToProperty("token");
-		
 		new Label(form).bindValueToProperty("estado");
 
+		new TextBox(form).setWidth(600).bindValueToProperty("token");
+		
 		new Button(form)
 		.setCaption("Validar")
 		.onClick(()-> this.getModelObject().validar());
@@ -46,11 +52,16 @@ public class ValidacionWindow extends SimpleWindow<ValidacionVM>{
 	
 		
 	public void obtenerAsignaciones(){
-		Dialog<?> dialog = new VerAsignacionesWindow(this);
+		Dialog<?> dialog = new VerAsignacionesWindow(this, this.getModelObject().getViewModel());
 		dialog.open();
 		dialog.onAccept(() -> {});
 	}
 	
+	public void actualizarDatos(){
+		Dialog<?> dialog = new ActualizarEstudianteWindow(this, this.getModelObject().getViewModel());
+		dialog.open();
+		dialog.onAccept(() -> {});
+	}
 
 
 }

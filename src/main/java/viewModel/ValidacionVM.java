@@ -14,7 +14,7 @@ import model.Estudiante;
 public class ValidacionVM {
 
 	private String token;
-	private String estado;
+	private String estado = "Ingrese token";
 	private Boolean habilitarOpciones;
 	private Estudiante estudiante;
 	
@@ -70,5 +70,8 @@ public class ValidacionVM {
 		this.habilitarOpciones = habilitarOpciones;
 	}*/
 
+	public ValidacionVM getViewModel() {
+		return this;
+	}
 
 }

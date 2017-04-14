@@ -1,28 +1,28 @@
 package view;
 
-import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 
 import model.Asignacion;
+import viewModel.ValidacionVM;
 import viewModel.VerAsignacionesVM;
 
 public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 
-	public VerAsignacionesWindow(WindowOwner owner) {
+	public VerAsignacionesWindow(WindowOwner owner, ValidacionVM validacionVM) {
 		super(owner, new VerAsignacionesVM());
+		this.getModelObject().setToken(validacionVM.getToken());
+		this.getModelObject().cargarNotas();
 	}
 
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
-		
 		this.setTitle("Ver asignaciones");
 
-		new TextBox(mainPanel).bindValueToProperty("token");
+		//new TextBox(mainPanel).bindValueToProperty("token");
 		
 		Table<Asignacion> tablaAsignaciones = new Table<Asignacion>(mainPanel, Asignacion.class);
 		tablaAsignaciones.setNumberVisibleRows(20);
@@ -55,8 +55,8 @@ public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 		columnaEstado.setFixedSize(100);
 		//columnaEstado.bindContentsToProperty("estado");*/
 		
-		new Button(mainPanel).setCaption("Ver asignaciones")
-		 					 .onClick(()->this.getModelObject().cargarNotas());
+		//new Button(mainPanel).setCaption("Ver asignaciones")
+		 					// .onClick(()->this.getModelObject().cargarNotas());
 		
 	
 	}

@@ -7,6 +7,17 @@ public class Estudiante {
 	private String last_name;
 	private String github_user;
 	
+	public Estudiante(){
+		super();
+	}
+	
+	public Estudiante(String code, String first_name, String last_name, String github_user){
+		this.code = code;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.github_user = github_user;
+	}
+	
 	public String getCode() {
 		return code;
 	}
