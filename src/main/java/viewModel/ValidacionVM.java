@@ -11,7 +11,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import model.Estudiante;
 
 @Observable
-public class ValidacionVM {
+public class ValidacionVM /*extends ParentVM*/{
 
 	private String token;
 	private String estado = "Ingrese token";
@@ -21,10 +21,10 @@ public class ValidacionVM {
 	public void validar(){
 		this.cargarEstudiante();
 		if (this.estudianteValido()) {
-			this.estado = "Token válido";
+			this.estado = "Token valido";
 			this.habilitarOpciones = true;
 		} else {
-			this.estado = "Token inválido";
+			this.estado = "Token invalido";
 			this.habilitarOpciones = null;
 		}
 	}
