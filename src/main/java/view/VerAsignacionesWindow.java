@@ -24,7 +24,7 @@ public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 		new TextBox(mainPanel).bindValueToProperty("token");
 		
 		Table<Asignacion> tablaAsignaciones = new Table<Asignacion>(mainPanel, Asignacion.class);
-		tablaAsignaciones.setNumberVisibleRows(10);
+		tablaAsignaciones.setNumberVisibleRows(20);
 		
 		tablaAsignaciones.bindItemsToProperty("asignaciones");
 		//tablaAsignaciones.bindValueToProperty("asignaciones");
@@ -43,6 +43,16 @@ public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 		columnaDescripcion.setTitle("Descripcion");
 		columnaDescripcion.setFixedSize(200);
 		columnaDescripcion.bindContentsToProperty("description");
+		
+		Column<Asignacion> columnaNotaActual = new Column<Asignacion>(tablaAsignaciones);
+		columnaNotaActual.setTitle("Nota");
+		columnaNotaActual.setFixedSize(100);
+		//columnaNotaActual.bindContentsToProperty("nota");
+		
+		Column<Asignacion> columnaEstado = new Column<Asignacion>(tablaAsignaciones);
+		columnaEstado.setTitle("Estado");
+		columnaEstado.setFixedSize(100);
+		//columnaEstado.bindContentsToProperty("estado");
 		
 		new Button(mainPanel).setCaption("obtener")
 						.onClick(()->this.getModelObject().cargarNotas());
