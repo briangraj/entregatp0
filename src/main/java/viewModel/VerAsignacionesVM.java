@@ -21,11 +21,12 @@ public class VerAsignacionesVM {
 	
 	public void cargarNotas() {
 		String json = Client.create().resource("http://notitas.herokuapp.com")
-        		.path("student/assignments")
-        	 	.header("Authorization", "Bearer " + this.token)
-                .accept(MediaType.APPLICATION_JSON)
-                .get(ClientResponse.class)
-                .getEntity(String.class);
+			        		.path("student/assignments")
+			        	 	.header("Authorization", "Bearer " + this.token)
+			                .accept(MediaType.APPLICATION_JSON)
+			                .get(ClientResponse.class)
+			                .getEntity(String.class);
+		
 		this.asignaciones = new Gson().fromJson(json, Asignaciones.class).getAssignments();
 	}
 
@@ -36,15 +37,9 @@ public class VerAsignacionesVM {
 		return asignaciones;
 	}
 
-
-
-
 	public void setAsignaciones(List<Asignacion> asignaciones) {
 		this.asignaciones = asignaciones;
 	}
-
-
-
 
 	public String getToken() {
 		return token;
