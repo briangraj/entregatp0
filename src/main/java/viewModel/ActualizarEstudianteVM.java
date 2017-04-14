@@ -21,6 +21,7 @@ public class ActualizarEstudianteVM {
 
 	private String token;
 	private String regex = "^[a-zA-Z ]+$";
+	private String msjActualizacion;
 	
 	public void verificarDatos(){
 		if(!this.datosLlenados()) {
@@ -29,7 +30,7 @@ public class ActualizarEstudianteVM {
 		if(this.first_name != null) verificarCampo(this.first_name);
 		if(this.last_name != null) verificarCampo(this.last_name);
 		this.actualizarDatos();
-		
+		this.msjActualizacion = "Datos actualizados";
 	}
 	
 	public void verificarCampo(String campo){
@@ -89,14 +90,12 @@ public class ActualizarEstudianteVM {
 		this.github_user = github_user;
 	}
 
-	public String getToken() {
-		return token;
-	}
-
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
-	
+
+	public String getMsjActualizacion() {
+		return msjActualizacion;
+	}
 	
 }

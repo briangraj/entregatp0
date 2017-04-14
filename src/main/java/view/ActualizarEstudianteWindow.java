@@ -34,6 +34,8 @@ public class ActualizarEstudianteWindow extends Dialog<ActualizarEstudianteVM>{
 		new Label(mainPanel).setText("Ingrese su usuario de github");
 		new TextBox(mainPanel).bindValueToProperty("github_user");
 		
+		new Label(mainPanel).bindValueToProperty("msjActualizacion");
+		
 		new Button(mainPanel).setCaption("Actualizar datos")
 							 .onClick(() -> this.getModelObject().verificarDatos());
 	}

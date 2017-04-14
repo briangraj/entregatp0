@@ -19,6 +19,7 @@ public class VerAsignacionesVM {
 	private List<Asignacion> asignaciones;
 	private String token;
 	
+	
 	public void cargarNotas() {
 		String json = Client.create().resource("http://notitas.herokuapp.com")
 			        		.path("student/assignments")
@@ -30,17 +31,8 @@ public class VerAsignacionesVM {
 		this.asignaciones = new Gson().fromJson(json, Asignaciones.class).getAssignments();
 	}
 
-	
 	public List<Asignacion> getAsignaciones() {
 		return asignaciones;
-	}
-
-	public void setAsignaciones(List<Asignacion> asignaciones) {
-		this.asignaciones = asignaciones;
-	}
-
-	public String getToken() {
-		return token;
 	}
 
 	public void setToken(String token) {

@@ -1,5 +1,7 @@
 package model;
 
+import org.joda.time.DateTime;
+
 public class Nota {
 
 	private String id;
@@ -14,11 +16,11 @@ public class Nota {
 	public String getValue() {
 		return value;
 	}
-	public String getCreated_at() {
-		return created_at;
+	public DateTime getCreated_at() {
+		return DateTime.parse(this.created_at);
 	}
-	public String getUpdated_at() {
-		return updated_at;
+	public DateTime getUpdated_at() {
+		return DateTime.parse(this.updated_at);
 	}
 	
 	

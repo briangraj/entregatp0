@@ -26,7 +26,6 @@ public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 		tablaAsignaciones.setNumberVisibleRows(20);
 		
 		tablaAsignaciones.bindItemsToProperty("asignaciones");
-		//tablaAsignaciones.bindValueToProperty("asignaciones");
 		
 		Column<Asignacion> columnaId = new Column<Asignacion>(tablaAsignaciones);
 		columnaId.setTitle("Identificacion");
@@ -43,15 +42,15 @@ public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 		columnaDescripcion.setFixedSize(200);
 		columnaDescripcion.bindContentsToProperty("description");
 		
-		/*Column<Asignacion> columnaNotaActual = new Column<Asignacion>(tablaAsignaciones);
+		Column<Asignacion> columnaNotaActual = new Column<Asignacion>(tablaAsignaciones);
 		columnaNotaActual.setTitle("Nota");
 		columnaNotaActual.setFixedSize(100);
-		//columnaNotaActual.bindContentsToProperty("nota");
+		columnaNotaActual.bindContentsToProperty("notaActual");
 		
 		Column<Asignacion> columnaEstado = new Column<Asignacion>(tablaAsignaciones);
 		columnaEstado.setTitle("Estado");
 		columnaEstado.setFixedSize(100);
-		//columnaEstado.bindContentsToProperty("estado");*/
+		columnaEstado.bindContentsToProperty("estadoNota");
 		
 	
 	}

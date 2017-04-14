@@ -16,6 +16,7 @@ public class ValidacionVM {
 	private String token;
 	private String estado = "Ingrese token";
 	private Boolean habilitarOpciones;
+	private Boolean cambiarToken = true;
 	private Estudiante estudiante;
 	
 	public void validar(){
@@ -23,10 +24,18 @@ public class ValidacionVM {
 		if (this.estudianteValido()) {
 			this.estado = "Token valido";
 			this.habilitarOpciones = true;
+			this.cambiarToken = null;
 		} else {
 			this.estado = "Token invalido";
 			this.habilitarOpciones = null;
+			this.cambiarToken = true;
 		}
+	}
+	
+	public void habilitarIngresarToken(){
+		this.estado = "Ingrese token";
+		this.habilitarOpciones = null;
+		this.cambiarToken = true;
 	}
 	
 	private Boolean estudianteValido() {
@@ -58,16 +67,15 @@ public class ValidacionVM {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
 	public Boolean getHabilitarOpciones() {
 		return habilitarOpciones;
+	}
+
+	public Boolean getCambiarToken() {
+		return cambiarToken;
 	}
 
 	public ValidacionVM getViewModel() {
 		return this;
 	}
-
 }

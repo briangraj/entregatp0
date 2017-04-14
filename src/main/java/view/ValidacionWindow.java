@@ -17,6 +17,8 @@ public class ValidacionWindow extends SimpleWindow<ValidacionVM>{
 		super(parent, new ValidacionVM());
 	}
 	
+	NotNullObservable elementSelected = new NotNullObservable("habilitarOpciones");
+	
 	@Override
 	protected void addActions(Panel panelActions) {
 		Button obtenerAsignaciones = new Button(panelActions)
@@ -27,8 +29,6 @@ public class ValidacionWindow extends SimpleWindow<ValidacionVM>{
 				.setCaption("Actualizar datos")
 				.onClick(() -> this.actualizarDatos());
 
-		
-		NotNullObservable elementSelected = new NotNullObservable("habilitarOpciones");
 		obtenerAsignaciones.bindEnabled(elementSelected);
 		actualizarDatos.bindEnabled(elementSelected);
 	}
@@ -41,13 +41,20 @@ public class ValidacionWindow extends SimpleWindow<ValidacionVM>{
 		
 		new Label(form).bindValueToProperty("estado");
 
-		new TextBox(form).setWidth(600).bindValueToProperty("token");
+		TextBox token = new TextBox(form);
+		token.setWidth(600).bindValueToProperty("token");
 		
 		new Button(form)
 		.setCaption("Validar")
 		.onClick(()-> this.getModelObject().validar());
 	
+		Button cambiarToken = new Button(form).setCaption("Cambiar token")
+											.onClick(()-> this.getModelObject().habilitarIngresarToken());
 		
+		NotNullObservable element = new NotNullObservable("cambiarToken");
+		token.bindEnabled(element);
+		cambiarToken.bindEnabled(elementSelected);
+
 	}
 	
 		
