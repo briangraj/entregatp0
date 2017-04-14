@@ -1,5 +1,6 @@
 package view;
 
+import org.uqbar.arena.bindings.NotNullObservable;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
@@ -18,9 +19,12 @@ public class ValidacionWindow extends SimpleWindow<ValidacionVM>{
 	
 	@Override
 	protected void addActions(Panel panelActions) {
-		new Button(panelActions)
-		.setCaption("Obtener asignaciones")
+		Button obtenerAsignaciones = new Button(panelActions)
+		.setCaption("Ver asignaciones")
 		.onClick(() -> this.obtenerAsignaciones());
+		
+		NotNullObservable elementSelected = new NotNullObservable("habilitarOpciones");
+		obtenerAsignaciones.bindEnabled(elementSelected);
 	}
 	
 	@Override
@@ -36,6 +40,7 @@ public class ValidacionWindow extends SimpleWindow<ValidacionVM>{
 		new Button(form)
 		.setCaption("Validar")
 		.onClick(()-> this.getModelObject().validar());
+	
 		
 	}
 	

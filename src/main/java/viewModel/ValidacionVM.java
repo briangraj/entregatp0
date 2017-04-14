@@ -15,14 +15,17 @@ public class ValidacionVM {
 
 	private String token;
 	private String estado;
+	private Boolean habilitarOpciones;
 	private Estudiante estudiante;
 	
 	public void validar(){
 		this.cargarEstudiante();
 		if (this.estudianteValido()) {
 			this.estado = "Token válido";
+			this.habilitarOpciones = true;
 		} else {
 			this.estado = "Token inválido";
+			this.habilitarOpciones = null;
 		}
 	}
 	
@@ -43,10 +46,6 @@ public class ValidacionVM {
 		this.estudiante = new Gson().fromJson(json, Estudiante.class);
 	}
 	
-	public void accion(){
-		
-	}
-	
 	public String getToken() {
 		return token;
 	}
@@ -63,14 +62,13 @@ public class ValidacionVM {
 		this.estado = estado;
 	}
 
-	public Estudiante getEstudiante() {
-		return estudiante;
+	public Boolean getHabilitarOpciones() {
+		return habilitarOpciones;
 	}
 
-	public void setEstudiante(Estudiante estudiante) {
-		this.estudiante = estudiante;
-	}
-	
-	
-	
+	/*public void setHabilitarOpciones(Boolean habilitarOpciones) {
+		this.habilitarOpciones = habilitarOpciones;
+	}*/
+
+
 }

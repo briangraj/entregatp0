@@ -19,7 +19,8 @@ public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
-		//Panel form = new Panel(mainPanel);
+		
+		this.setTitle("Ver asignaciones");
 
 		new TextBox(mainPanel).bindValueToProperty("token");
 		
@@ -44,9 +45,8 @@ public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 		columnaDescripcion.setFixedSize(200);
 		columnaDescripcion.bindContentsToProperty("description");
 		
-		new Button(mainPanel).setCaption("obtener")
-						.onClick(()->this.getModelObject().cargarNotas());
-		
+		new Button(mainPanel).setCaption("Ver asignaciones")
+							 .onClick(()->this.getModelObject().cargarNotas());
 		
 	}
 }
