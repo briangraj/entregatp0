@@ -14,11 +14,16 @@ import model.Asignacion;
 import model.Asignaciones;
 
 @Observable
-public class VerAsignacionesVM {
+public class VerAsignacionesVM extends ParentVM{
 	
 	private List<Asignacion> asignaciones;
-	private String token;
+	//private String token;
 	
+
+
+
+
+
 	public void cargarNotas() {
 		String json = Client.create().resource("http://notitas.herokuapp.com")
 			        		.path("student/assignments")
@@ -40,13 +45,13 @@ public class VerAsignacionesVM {
 	public void setAsignaciones(List<Asignacion> asignaciones) {
 		this.asignaciones = asignaciones;
 	}
-
+/*
 	public String getToken() {
 		return token;
 	}
 
 	public void setToken(String token) {
 		this.token = token;
-	}
+	}*/
 	
 }

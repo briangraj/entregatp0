@@ -11,9 +11,9 @@ import com.sun.jersey.api.client.ClientResponse;
 import model.Estudiante;
 
 @Observable
-public class ValidacionVM {
+public class ValidacionVM extends ParentVM{
 
-	private String token;
+	//private String token;
 	private String estado;
 	private Boolean habilitarOpciones;
 	private Estudiante estudiante;
@@ -21,10 +21,10 @@ public class ValidacionVM {
 	public void validar(){
 		this.cargarEstudiante();
 		if (this.estudianteValido()) {
-			this.estado = "Token válido";
+			this.estado = "Token vï¿½lido";
 			this.habilitarOpciones = true;
 		} else {
-			this.estado = "Token inválido";
+			this.estado = "Token invï¿½lido";
 			this.habilitarOpciones = null;
 		}
 	}
@@ -45,14 +45,14 @@ public class ValidacionVM {
 			                .getEntity(String.class);
 		this.estudiante = new Gson().fromJson(json, Estudiante.class);
 	}
-	
+	/*
 	public String getToken() {
 		return token;
 	}
 
 	public void setToken(String token) {
 		this.token = token;
-	}
+	}*/
 
 	public String getEstado() {
 		return estado;
