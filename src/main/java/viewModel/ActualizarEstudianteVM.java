@@ -20,10 +20,11 @@ public class ActualizarEstudianteVM {
 	private String github_user;
 
 	private String token;
-	private String regex = "^[a-zA-Z ]+$";
+	private String regex = "[a-zA-Z ]";//"^[a-zA-Z ]+$";
 	private String msjActualizacion;
 	
 	public void verificarDatos(){
+		this.cambiarVacios();
 		if(!this.datosLlenados()) {
 			throw new UserException("Debe llenar algun dato");
 		}
@@ -34,7 +35,7 @@ public class ActualizarEstudianteVM {
 	}
 	
 	public void verificarCampo(String campo){
-		if(!campo.matches(this.regex)){
+		if(campo.matches(this.regex)){
 			throw new UserException("Nombre y apellido solo pueden tener letras");
 		}
 	}
@@ -57,6 +58,13 @@ public class ActualizarEstudianteVM {
                 .put(ClientResponse.class, json);
 	}
 
+	private void cambiarVacios(){
+		if (this.code == "") this.code = null;
+		if (this.first_name == "") this.first_name= null;
+		if (this.last_name == "") this.last_name = null;
+		if (this.github_user == "") this.github_user = null;
+
+	}
 	
 	public String getCode() {
 		return code;
