@@ -9,7 +9,6 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 
 import model.Asignacion;
-import model.Asignaciones;
 import viewModel.VerAsignacionesVM;
 
 public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
@@ -24,31 +23,29 @@ public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 
 		new TextBox(mainPanel).bindValueToProperty("token");
 		
-		Table tablaAsignaciones = new Table<Asignaciones>(mainPanel, Asignaciones.class);
-		tablaAsignaciones.setHeight(300);
+		Table<Asignacion> tablaAsignaciones = new Table<Asignacion>(mainPanel, Asignacion.class);
+		tablaAsignaciones.setNumberVisibleRows(10);
 		
-		//tablaAsignaciones.bindItemsToProperty("asignacion");
-		tablaAsignaciones.bindValueToProperty("asignaciones");
+		tablaAsignaciones.bindItemsToProperty("asignaciones");
+		//tablaAsignaciones.bindValueToProperty("asignaciones");
 		
-		Column<Asignaciones> columnaId = new Column<Asignaciones>(tablaAsignaciones);
+		Column<Asignacion> columnaId = new Column<Asignacion>(tablaAsignaciones);
 		columnaId.setTitle("Identificacion");
 		columnaId.setFixedSize(100);
 		columnaId.bindContentsToProperty("id");
-		//columnaId.setFixedSize(50);
 		
-		Column<Asignaciones> columnaTitle = new Column<Asignaciones>(tablaAsignaciones);
+		Column<Asignacion> columnaTitle = new Column<Asignacion>(tablaAsignaciones);
 		columnaTitle.setTitle("Titulo");
-		//columnaTitle.setWeight();
+		columnaTitle.setFixedSize(100);
+		columnaTitle.bindContentsToProperty("title");
 		
-		Column<Asignaciones> columnaDescripcion = new Column<Asignaciones>(tablaAsignaciones);
+		Column<Asignacion> columnaDescripcion = new Column<Asignacion>(tablaAsignaciones);
 		columnaDescripcion.setTitle("Descripcion");
-		
-		//tablaAsignaciones.setHeight(300);
-		//tablaAsignaciones.setWidth(600);
+		columnaDescripcion.setFixedSize(200);
+		columnaDescripcion.bindContentsToProperty("description");
 		
 		new Button(mainPanel).setCaption("obtener")
-						.onClick(()->this.getModelObject().cargarNotas())
-						.setWidth(600);
+						.onClick(()->this.getModelObject().cargarNotas());
 		
 		
 	}

@@ -15,8 +15,7 @@ public class ValidacionVM {
 
 	private String token;
 	private String estado;
-	private Estudiante estudiante;// = new Estudiante();
-
+	private Estudiante estudiante;
 	
 	public void validar(){
 		this.cargarEstudiante();
@@ -34,7 +33,6 @@ public class ValidacionVM {
 				this.estudiante.getGithub_user() != null;
 	}
 	
-	//@Dependencies("token")
 	public void cargarEstudiante(){
 		String json = Client.create().resource("http://notitas.herokuapp.com")
 			        		.path("student")

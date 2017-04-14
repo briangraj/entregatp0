@@ -29,7 +29,7 @@ public class ValidacionWindow extends SimpleWindow<ValidacionVM>{
 		this.setTitle("Validacion del token");
 		
 		
-		new TextBox(form).bindValueToProperty("token");
+		new TextBox(form).setWidth(600).bindValueToProperty("token");
 		
 		new Label(form).bindValueToProperty("estado");
 

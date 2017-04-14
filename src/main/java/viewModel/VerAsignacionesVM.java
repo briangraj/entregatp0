@@ -26,7 +26,6 @@ public class VerAsignacionesVM {
                 .accept(MediaType.APPLICATION_JSON)
                 .get(ClientResponse.class)
                 .getEntity(String.class);
-		System.out.println(json);
 		this.asignaciones = new Gson().fromJson(json, Asignaciones.class).getAssignments();
 	}
 
