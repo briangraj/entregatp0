@@ -11,7 +11,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import model.Estudiante;
 
 @Observable
-public class ValidacionVM /*extends ParentVM*/{
+public class ValidacionVM {
 
 	private String token;
 	private String estado = "Ingrese token";
@@ -65,10 +65,6 @@ public class ValidacionVM /*extends ParentVM*/{
 	public Boolean getHabilitarOpciones() {
 		return habilitarOpciones;
 	}
-
-	/*public void setHabilitarOpciones(Boolean habilitarOpciones) {
-		this.habilitarOpciones = habilitarOpciones;
-	}*/
 
 	public ValidacionVM getViewModel() {
 		return this;

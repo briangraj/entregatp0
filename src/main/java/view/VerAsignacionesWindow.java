@@ -22,8 +22,6 @@ public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 	protected void createFormPanel(Panel mainPanel) {
 		this.setTitle("Ver asignaciones");
 
-		//new TextBox(mainPanel).bindValueToProperty("token");
-		
 		Table<Asignacion> tablaAsignaciones = new Table<Asignacion>(mainPanel, Asignacion.class);
 		tablaAsignaciones.setNumberVisibleRows(20);
 		
@@ -54,9 +52,6 @@ public class VerAsignacionesWindow extends Dialog<VerAsignacionesVM>{
 		columnaEstado.setTitle("Estado");
 		columnaEstado.setFixedSize(100);
 		//columnaEstado.bindContentsToProperty("estado");*/
-		
-		//new Button(mainPanel).setCaption("Ver asignaciones")
-		 					// .onClick(()->this.getModelObject().cargarNotas());
 		
 	
 	}

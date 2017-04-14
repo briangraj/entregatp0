@@ -7,6 +7,7 @@ import org.uqbar.commons.utils.Observable;
 
 import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
 
 import model.Estudiante;
 
@@ -19,39 +20,40 @@ public class ActualizarEstudianteVM {
 	private String github_user;
 
 	private String token;
-	private String regex = "^[a-zA-Z]+$";
+	private String regex = "^[a-zA-Z ]+$";
 	
 	public void verificarDatos(){
-		//this.actualizarDatos();
 		if(!this.datosLlenados()) {
-			throw new UserException("Debe completar todos los datos");
+			throw new UserException("Debe llenar algun dato");
 		}
+		if(this.first_name != null) verificarCampo(this.first_name);
+		if(this.last_name != null) verificarCampo(this.last_name);
+		this.actualizarDatos();
 		
-		if(!first_name.matches(this.regex)){
-			throw new UserException("El nombre solo puede tener letras");
-		} else if(!last_name.matches(this.regex)) {
-			throw new UserException("El apellido solo puede tener letras");
-		}else {
-			this.actualizarDatos();
+	}
+	
+	public void verificarCampo(String campo){
+		if(!campo.matches(this.regex)){
+			throw new UserException("Nombre y apellido solo pueden tener letras");
 		}
 	}
 	
 	public Boolean datosLlenados(){
-		return this.last_name != null &&
-				this.first_name != null &&
-				this.github_user != null;
+		return this.last_name != null ||
+				this.first_name != null ||
+				this.github_user != null ||
+				this.code != null;
 	}
 	
 	public void actualizarDatos(){
 		Estudiante estudiante = new Estudiante(code, first_name, last_name, github_user);
-		String json = new Gson().toJson(estudiante, Estudiante.class);//.toJson(estudiante);
+		String json = new Gson().toJson(estudiante);
 		
 		Client.create().resource("http://notitas.herokuapp.com")
         		.path("student")
         	 	.header("Authorization", "Bearer " + this.token)
                 .accept(MediaType.APPLICATION_JSON)
-                .put(json);//.put(json, ClientResponse.class)
-                //.put(ClientResponse.class, json);
+                .put(ClientResponse.class, json);
 	}
 
 	

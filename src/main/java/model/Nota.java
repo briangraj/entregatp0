@@ -6,6 +6,8 @@ public class Nota {
 	private String value;
 	private String created_at;
 	private String updated_at;
+	
+	
 	public String getId() {
 		return id;
 	}
